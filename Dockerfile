@@ -11,7 +11,7 @@ ENV OBFS_DOWNLOAD_URL https://github.com/shadowsocks/simple-obfs.git
 
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
 	&& apk upgrade \
-	&& apk add bash tzdata libsodium rng-tools \
+	&& apk add bash tzdata libsodium rng-tools privoxy \
 	&& apk add --virtual .build-deps \
 	autoconf \
 	automake \
@@ -47,7 +47,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 	| xargs -r apk info --installed \
 	| sort -u \
 	)" \
-	&& apk add --virtual .run-deps $runDeps privoxy \
+	&& apk add --virtual .run-deps $runDeps \
 	&& apk del .build-deps \
 	&& rm -rf shadowsocks-libev-${SS_LIBEV_VERSION}.tar.gz \
 	shadowsocks-libev-${SS_LIBEV_VERSION} \

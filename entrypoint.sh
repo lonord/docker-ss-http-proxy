@@ -7,7 +7,7 @@ PRIVOXY_FLAG=${PRIVOXY_FLAG:-"false"}
 PRIVOXY_LISTEN_PORT=${PRIVOXY_LISTEN_PORT:-""}
 PRIVOXY_FORWARD_PORT=${PRIVOXY_FORWARD_PORT:-""}
 
-while getopts "s:m:k:e:xrp" OPT; do
+while getopts "s:m:l:f:rp" OPT; do
     case $OPT in
         s)
             SS_CONFIG=$OPTARG;;
